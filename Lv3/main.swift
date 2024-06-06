@@ -58,19 +58,16 @@ let calculator = Calculator()
 func getUserInput() -> (Double, Double, String)? {
     print("첫번째 숫자: ", terminator: "")
     guard let inputA = readLine(), let a = Double(inputA) else {
-        print("잘못된 입력")
         return nil
     }
     
     print("두번째 숫자: ", terminator: "")
     guard let inputB = readLine(), let b = Double(inputB) else {
-        print("잘못된 입력")
         return nil
     }
     
     print("(+, -, *, /): ", terminator: "")
     guard let operation = readLine(), ["+", "-", "*", "/"].contains(operation) else {
-        print("잘못된 입력")
         return nil
     }
     
