@@ -4,25 +4,25 @@ protocol Operation {
     func execute(_ a: Double, _ b: Double) -> Double
 }
 
-class Addition: Operation {
+class AddOperation: Operation {
     func execute(_ a: Double, _ b: Double) -> Double {
         return a + b
     }
 }
 
-class Subtraction: Operation {
+class SubtractOperation: Operation {
     func execute(_ a: Double, _ b: Double) -> Double {
         return a - b
     }
 }
 
-class Multiplication: Operation {
+class MultiplyOperation: Operation {
     func execute(_ a: Double, _ b: Double) -> Double {
         return a * b
     }
 }
 
-class Division: Operation {
+class DivideOperation: Operation {
     func execute(_ a: Double, _ b: Double) -> Double {
         if b == 0 {
             print("0으로 나누었습니다")
@@ -35,22 +35,22 @@ class Division: Operation {
 
 class Calculator {
     
-    private let addition = Addition()
-    private let subtraction = Subtraction()
-    private let multiplication = Multiplication()
-    private let division = Division()
+    private let addOperation = AddOperation()
+    private let subtractOperation = SubtractOperation()
+    private let multiplyOperation = MultiplyOperation()
+    private let divideOperation = DivideOperation()
     
     func add(_ a: Double, _ b: Double) -> Double {
-        return addition.execute(a, b)
+        return addOperation.execute(a, b)
     }
     func subtract(_ a: Double, _ b: Double) -> Double {
-        return subtraction.execute(a, b)
+        return subtractOperation.execute(a, b)
     }
     func multiply(_ a: Double, _ b: Double) -> Double {
-        return multiplication.execute(a, b)
+        return multiplyOperation.execute(a, b)
     }
     func divide(_ a: Double, _ b: Double) -> Double {
-        return division.execute(a, b)
+        return divideOperation.execute(a, b)
     }
 }
 
@@ -94,15 +94,12 @@ func performCalculation(calculator: Calculator, a: Double, b: Double, operation:
 }
 
 while true {
-    if let (a, b, operation) = getUserInput() {
-        let result = performCalculation(calculator: calculator, a: a, b: b, operation: operation)
-        print("Result: \(result)")
-    } else {
-        print("Invalid input, please try again.")
+    guard let (a, b, operation) = getUserInput() else {
+        print("입력이 잘못되었습니다.")
+        continue
     }
     
-    print("다른 계산을 하시겠습니까? (yes/no): ", terminator: "")
-    if let continueInput = readLine(), continueInput.lowercased() == "yes" {
-        break
-    }
+    let result = performCalculation(calculator: calculator, a: a, b: b, operation: operation)
+    print("Result: \(result)")
 }
+
