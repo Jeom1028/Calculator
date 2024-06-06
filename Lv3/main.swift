@@ -25,7 +25,6 @@ class MultiplyOperation: Operation {
 class DivideOperation: Operation {
     func execute(_ a: Double, _ b: Double) -> Double {
         if b == 0 {
-            print("0으로 나누었습니다")
             return 0
         } else {
             return a / b
@@ -89,7 +88,7 @@ func performCalculation(calculator: Calculator, a: Double, b: Double, operation:
     case "/":
         return calculator.divide(a, b)
     default:
-        fatalError("Unsupported operation")
+        fatalError("오류")
     }
 }
 
