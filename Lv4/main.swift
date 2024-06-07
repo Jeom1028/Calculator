@@ -1,6 +1,6 @@
 class AbstractOperation {
     func execute(_ a: Double, _ b: Double) -> Double {
-        fatalError("This method should be overridden by subclasses")
+        return 0
     }
 }
 
