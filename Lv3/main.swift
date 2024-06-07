@@ -1,29 +1,29 @@
-import Foundation
-
-protocol Operation {
-    func execute(_ a: Double, _ b: Double) -> Double
+class Calculator {
+    func execute(_ a: Double, _ b: Double) -> Double {
+        fatalError("This method should be overridden by subclasses")
+    }
 }
 
-class AddOperation: Operation {
-    func execute(_ a: Double, _ b: Double) -> Double {
+class AddOperation: Calculator {
+    override func execute(_ a: Double, _ b: Double) -> Double {
         return a + b
     }
 }
 
-class SubtractOperation: Operation {
-    func execute(_ a: Double, _ b: Double) -> Double {
+class SubtractOperation: Calculator {
+    override func execute(_ a: Double, _ b: Double) -> Double {
         return a - b
     }
 }
 
-class MultiplyOperation: Operation {
-    func execute(_ a: Double, _ b: Double) -> Double {
+class MultiplyOperation: Calculator {
+    override func execute(_ a: Double, _ b: Double) -> Double {
         return a * b
     }
 }
 
-class DivideOperation: Operation {
-    func execute(_ a: Double, _ b: Double) -> Double {
+class DivideOperation: Calculator {
+    override func execute(_ a: Double, _ b: Double) -> Double {
         if b == 0 {
             return 0
         } else {
@@ -32,7 +32,7 @@ class DivideOperation: Operation {
     }
 }
 
-class Calculator {
+class CalculatorClient {
     
     private let addOperation = AddOperation()
     private let subtractOperation = SubtractOperation()
@@ -53,7 +53,7 @@ class Calculator {
     }
 }
 
-let calculator = Calculator()
+let calculatorClient = CalculatorClient()
 
 func getUserInput() -> (Double, Double, String)? {
     print("첫번째 숫자: ", terminator: "")
@@ -74,16 +74,16 @@ func getUserInput() -> (Double, Double, String)? {
     return (a, b, operation)
 }
 
-func performCalculation(calculator: Calculator, a: Double, b: Double, operation: String) -> Double {
+func performCalculation(calculatorClient: CalculatorClient, a: Double, b: Double, operation: String) -> Double {
     switch operation {
     case "+":
-        return calculator.add(a, b)
+        return calculatorClient.add(a, b)
     case "-":
-        return calculator.subtract(a, b)
+        return calculatorClient.subtract(a, b)
     case "*":
-        return calculator.multiply(a, b)
+        return calculatorClient.multiply(a, b)
     case "/":
-        return calculator.divide(a, b)
+        return calculatorClient.divide(a, b)
     default:
         fatalError("오류")
     }
@@ -95,7 +95,6 @@ while true {
         continue
     }
     
-    let result = performCalculation(calculator: calculator, a: a, b: b, operation: operation)
+    let result = performCalculation(calculatorClient: calculatorClient, a: a, b: b, operation: operation)
     print("Result: \(result)")
 }
-
