@@ -42,20 +42,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C23D02532C1290DC00B08203 /* Lv4 */ = {
-			isa = PBXGroup;
-			children = (
-				C259F0A02C11A67B00FC8EB4 /* main.swift */,
-			);
-			path = Lv4;
-			sourceTree = "<group>";
-		};
 		C259F0942C11A67B00FC8EB4 = {
 			isa = PBXGroup;
 			children = (
 				C259F0A72C11A6C100FC8EB4 /* Lv2 */,
 				C259F09F2C11A67B00FC8EB4 /* Lv3 */,
-				C23D02532C1290DC00B08203 /* Lv4 */,
 				C259F09E2C11A67B00FC8EB4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				C23D02542C1290FC00B08203 /* Lv3.swift */,
+				C259F0A02C11A67B00FC8EB4 /* main.swift */,
 			);
 			path = Lv3;
 			sourceTree = "<group>";
